@@ -12,13 +12,14 @@
     "crypto-random-string": "^3.0.1",
     "dayjs": "^1.8.16",
     "express": "^4.17.1",
+    "debug": "^4.1.1",
     "ioredis": "^4.14.0"
   },
   "devDependencies": {
-    "debug": "^4.1.1",
     "eslint": "^6.3.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.9.0",
     "nodemon": "^1.19.2",

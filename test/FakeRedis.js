@@ -6,7 +6,7 @@ module.exports = class FakeRedis {
   async zadd(score, ...args) {
     this.list.push({
       command: 'zadd',
-      args,
+      args
     });
 
     return this;
