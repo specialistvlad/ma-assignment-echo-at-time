@@ -1,0 +1,35 @@
+{
+  "name": "ma-assignment-echo-at-time",
+  "version": "1.0.0",
+  "description": "Make http request to schedule your echo. Enjoy!",
+  "main": "./src/index.js",
+  "author": "Vladyslav Kazantsev <specialistvlad@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cron": "^1.7.2",
+    "crypto-random-string": "^3.0.1",
+    "dayjs": "^1.8.16",
+    "express": "^4.17.1",
+    "ioredis": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "debug": "^4.1.1",
+    "prettier": "^1.18.2"
+  },
+  "scripts": {
+    "start": "yarn run nodemon ./src",
+    "debug": "DEBUG=ma-assignment-echo-at-time yarn start",
+    "post-message": "curl -X POST -d 'time=' -d 'message=test' http://localhost:3000/echoAtTime",
+    "seed": "curl http://localhost:3000/seed",
+    "redis:run": "docker run -p 6379:6379 --name ma-assignment-echo-at-time-redis -d redis",
+    "redis:start": "docker start ma-assignment-echo-at-time-redis",
+    "redis:stop": "docker stop $(docker ps -a | grep ma-assignment-echo-at-time-redis | awk '{print $1}')"
+  }
+}
