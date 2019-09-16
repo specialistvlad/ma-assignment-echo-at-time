@@ -13,3 +13,8 @@ Redis should be available on port 6379.
 ### Client
 - Send message example `curl -X POST -d 'time=2019-09-16T00:10:50.474Z' -d 'message=test' http://localhost:3000/echoAtTime` (Please be careful with timezone. For Ukraine should be minus 3 hours)
 - Post few messages for debug purposes `yarn seed`
+
+
+## Todo
+- Create class "Storage" and extend Queue from Storage. And move data access methods from Queue to Storage class.
+- increase coverage
