@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adding data check positive flow of quering to redis 1`] = `
+Array [
+  Object {
+    "args": Array [
+      4000,
+      "5ba7f8fcc34fec8effc4:Message 3",
+    ],
+    "command": "zadd",
+  },
+  Object {
+    "args": Array [
+      6000,
+      "0b4ca07b7b016914faf0:Message 5",
+    ],
+    "command": "zadd",
+  },
+  Object {
+    "args": Array [
+      1000,
+      "aaa8a2cac35ac904ccbd:Message 1",
+    ],
+    "command": "zadd",
+  },
+  Object {
+    "args": Array [
+      5001,
+      "bd33d2d2b04b88babd00:Message 4",
+    ],
+    "command": "zadd",
+  },
+  Object {
+    "args": Array [
+      5002,
+      "0282dd3242ee443aa826:Message 4_2",
+    ],
+    "command": "zadd",
+  },
+  Object {
+    "args": Array [
+      3000,
+      "6d9bf1f644e8e5387383:Message 2",
+    ],
+    "command": "zadd",
+  },
+]
+`;

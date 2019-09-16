@@ -1,17 +1,16 @@
-const Redis = require('ioredis');
 const dayjs = require('dayjs');
 const cryptoRandomString = require('crypto-random-string');
 
 module.exports = class Queue {
-  constructor({ debug }) {
-    this.redis = new Redis();
+  constructor({ debug, storage }) {
+    this.redis = storage;
     this.name = 'queue';
     this.debug = debug;
   }
 
-  async postMessage(score, message) {
+  async add(score, message) {
     const member = `${cryptoRandomString({ length: 20 })}:${message}`;
-    this.debug(`postMessage: ${score}, "${member}"`);
+    this.debug(`add: ${score}, "${member}"`);
     return this.redis.zadd(this.name, score, member);
   }
 
@@ -28,7 +27,7 @@ module.exports = class Queue {
         [5001, 'Message 4'],
         [5002, 'Message 4_2'],
         [3000, 'Message 2']
-      ].map(([offset, message]) => this.postMessage(this.getCurrentTime() + offset, message))
+      ].map(([offset, message]) => this.add(this.getCurrentTime() + offset, message))
     );
   }
 

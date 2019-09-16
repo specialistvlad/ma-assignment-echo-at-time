@@ -22,7 +22,7 @@ module.exports = ({ queue, debug}) => {
       return;
     }
 
-    queue.postMessage(dateTime.valueOf(), message);
+    queue.add(dateTime.valueOf(), message);
     res.sendStatus(200);
   });
 
