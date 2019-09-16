@@ -1,4 +1,4 @@
-const EchoQueue = require('../../src/Queue');
+const EchoQueue = require('../../src/classes/Queue');
 
 class QueueWithMockedVariables extends EchoQueue {
   constructor(opts, ...args) {

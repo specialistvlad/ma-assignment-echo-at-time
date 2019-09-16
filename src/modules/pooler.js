@@ -1,5 +1,5 @@
 const { CronJob } = require('cron');
-const EchoQueue = require('./EchoQueue');
+const EchoQueue = require('../classes/EchoQueue');
 
 module.exports = ({ storage, debug }) => {
   const echoQueue = new EchoQueue({ storage, debug });

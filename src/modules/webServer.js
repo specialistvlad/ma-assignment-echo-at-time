@@ -2,7 +2,7 @@ const express = require('express');
 const { urlencoded } = require('body-parser');
 const dayjs = require('dayjs');
 
-const Queue = require('./Queue');
+const Queue = require('../classes/Queue');
 
 module.exports = ({ storage, debug }) => {
   const queue = new Queue({ storage, debug });

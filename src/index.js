@@ -1,8 +1,8 @@
 const Redis = require('ioredis');
 const createDebug = require('debug');
 
-const pooler = require('./pooler');
-const webServer = require('./webServer');
+const pooler = require('./modules/pooler');
+const webServer = require('./modules/webServer');
 const { name } = require('../package');
 
 const debug = createDebug(name);
