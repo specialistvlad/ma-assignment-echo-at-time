@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`adding data check positive flow of quering to redis 1`] = `
+exports[`addingDataToStorage check positive flow of quering to redis 1`] = `
 Array [
   Object {
     "args": Array [

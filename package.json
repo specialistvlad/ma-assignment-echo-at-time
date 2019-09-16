@@ -6,11 +6,6 @@
   "author": "Vladyslav Kazantsev <specialistvlad@gmail.com>",
   "license": "MIT",
   "private": false,
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn pre-commit"
-    }
-  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cron": "^1.7.2",
@@ -36,12 +31,29 @@
     "pre-commit": "yarn lint & yarn test",
     "debug": "DEBUG=ma-assignment-echo-at-time yarn start",
     "lint": "yarn eslint .",
-    "test": "yarn jest",
+    "test": "yarn jest --coverage",
     "test:watch": "yarn test --watch",
     "test:update": "yarn test --updateSnapshot",
     "seed": "curl http://localhost:3000/seed",
     "redis:run": "docker run -p 6379:6379 --name ma-assignment-echo-at-time-redis -d redis",
     "redis:start": "docker start ma-assignment-echo-at-time-redis",
     "redis:stop": "docker stop $(docker ps -a | grep ma-assignment-echo-at-time-redis | awk '{print $1}')"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit"
+    }
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+    "coverageThreshold": {
+      "global": {
+        "statements": 18.18,
+        "branches": 12.5,
+        "functions": 16.67,
+        "lines": 18.52
+      }
+    }
   }
 }

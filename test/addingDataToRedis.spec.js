@@ -2,7 +2,7 @@ const debug = require('debug')('');
 const FakeRedis = require('./FakeRedis');
 const EchoQueue = require('../src/Queue');
 
-describe('adding data', () => {
+describe('addingDataToStorage', () => {
   it('check positive flow of quering to redis', async () => {
     const dataSet = [
       [4000, 'Message 3'],
