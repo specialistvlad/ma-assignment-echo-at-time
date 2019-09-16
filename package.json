@@ -26,7 +26,6 @@
   "scripts": {
     "start": "yarn run nodemon ./src",
     "debug": "DEBUG=ma-assignment-echo-at-time yarn start",
-    "post-message": "curl -X POST -d 'time=' -d 'message=test' http://localhost:3000/echoAtTime",
     "seed": "curl http://localhost:3000/seed",
     "redis:run": "docker run -p 6379:6379 --name ma-assignment-echo-at-time-redis -d redis",
     "redis:start": "docker start ma-assignment-echo-at-time-redis",

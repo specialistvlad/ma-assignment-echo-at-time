@@ -8,5 +8,8 @@ Redis should be available on port 6379.
 
 ### Running application
 - Type command `yarn start`
+- Debug purposes `yarn debug`
 
 ### Client
+- Send message example `curl -X POST -d 'time=2019-09-16T00:10:50.474Z' -d 'message=test' http://localhost:3000/echoAtTime`
+- Post few messages for debug purposes `yarn seed`
