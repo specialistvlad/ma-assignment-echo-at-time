@@ -6,16 +6,22 @@
   "author": "Vladyslav Kazantsev <specialistvlad@gmail.com>",
   "license": "MIT",
   "private": false,
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit"
+    }
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cron": "^1.7.2",
     "crypto-random-string": "^3.0.1",
     "dayjs": "^1.8.16",
-    "express": "^4.17.1",
     "debug": "^4.1.1",
+    "express": "^4.17.1",
     "ioredis": "^4.14.0"
   },
   "devDependencies": {
+    "husky": "^3.0.5",
     "eslint": "^6.3.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.2.0",
