@@ -3,12 +3,10 @@ const dayjs = require('dayjs');
 const cryptoRandomString = require('crypto-random-string');
 
 module.exports = class Queue {
-  constructor({ timeSeed, debug }) {
+  constructor({ debug }) {
     this.redis = new Redis();
     this.name = 'queue';
     this.debug = debug;
-    this.timeSeed = timeSeed;
-    console.log('Queue started, time seed', timeSeed);
   }
 
   async postMessage(score, message) {

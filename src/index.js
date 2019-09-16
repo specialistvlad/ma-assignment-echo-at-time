@@ -6,7 +6,7 @@ const { name } = require('../package');
 
 const debug = createDebug(name);
 
-const queue = new Queue({ timeSeed, debug });
+const queue = new Queue({ debug });
 const cron = Cron(queue.pool.bind(queue));
 
 server({ queue, debug });
