@@ -9,7 +9,7 @@ module.exports = ({ storage, debug }) => {
   const app = express();
   app.use(urlencoded({ extended: false }));
 
-  app.post('/echoAtTime', (req, res) => {
+  app.post('/echoAtTime', async (req, res) => {
     const { message, time: sourceTime } = req.body;
     const dateTime = dayjs(sourceTime);
     debug(`echoAtTime - message:"${message}" at time:"${dateTime}"`);
@@ -25,12 +25,22 @@ module.exports = ({ storage, debug }) => {
       return;
     }
 
-    queue.add(dateTime.valueOf(), message);
+    await queue.add(dateTime.valueOf(), message);
     res.sendStatus(200);
   });
 
-  app.get('/seed', (req, res) => {
-    queue.seed();
+  app.get('/seed', async (req, res) => {
+    await Promise.all(
+      [
+        [4000, 'Message 3'],
+        [6000, 'Message 5'],
+        [1000, 'Message 1'],
+        [5001, 'Message 4'],
+        [5002, 'Message 4_2'],
+        [3000, 'Message 2']
+      ].map(([offset, message]) => queue.add(dayjs().valueOf() + offset, message))
+    );
+
     res.sendStatus(200);
   });
 

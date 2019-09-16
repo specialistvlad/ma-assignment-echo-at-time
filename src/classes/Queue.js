@@ -22,19 +22,6 @@ module.exports = class Queue {
     return dayjs().valueOf();
   }
 
-  async seed() {
-    return Promise.all(
-      [
-        [4000, 'Message 3'],
-        [6000, 'Message 5'],
-        [1000, 'Message 1'],
-        [5001, 'Message 4'],
-        [5002, 'Message 4_2'],
-        [3000, 'Message 2']
-      ].map(([offset, message]) => this.add(this._getCurrentTime() + offset, message))
-    );
-  }
-
   async shift() {
     const time = this._getCurrentTime();
     const [[, result]] = await this.redis
