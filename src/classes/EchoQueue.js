@@ -6,7 +6,7 @@ class EchoQueue extends Queue {
     return message
       .split(':')
       .slice(1)
-      .join('');
+      .join(':');
   }
 
   _print(...args) {

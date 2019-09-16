@@ -32,8 +32,8 @@
     "buildcheck": "yarn lint & yarn test",
     "debug": "DEBUG=ma-assignment-echo-at-time yarn start",
     "lint": "yarn eslint .",
-    "test": "yarn jest",
-    "test:watch": "yarn jest --watch",
+    "test": "yarn jest ./src ./test --coverage",
+    "test:watch": "yarn jest ./src ./test --watch",
     "test:update": "yarn test --updateSnapshot",
     "seed": "curl http://localhost:3000/seed",
     "redis:run": "docker run -p 6379:6379 --name ma-assignment-echo-at-time-redis -d redis",
@@ -51,10 +51,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 18.18,
-        "branches": 12.5,
-        "functions": 16.67,
-        "lines": 18.52
+        "statements": 26.15,
+        "branches": 0,
+        "functions": 26.67,
+        "lines": 26.98
       }
     }
   }
