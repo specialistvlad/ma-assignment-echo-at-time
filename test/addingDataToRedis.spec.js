@@ -14,7 +14,11 @@ describe('adding data', () => {
     ];
 
     const storage = new FakeRedis();
-    const echoQueue = new EchoQueue({ storage, debug });
+    const echoQueue = new EchoQueue({
+      storage,
+      debug,
+      randomStringGenerator: () => 'not random string generator'
+    });
     await Promise.all(dataSet.map(item => echoQueue.add(...item)));
     expect(storage.history).toMatchSnapshot();
   });

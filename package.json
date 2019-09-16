@@ -27,7 +27,9 @@
   },
   "scripts": {
     "start": "yarn run nodemon ./src",
+    "pre-commit": "yarn lint & yarn test",
     "debug": "DEBUG=ma-assignment-echo-at-time yarn start",
+    "lint": "yarn eslint .",
     "test": "yarn jest",
     "test:watch": "yarn test --watch",
     "test:update": "yarn test --updateSnapshot",

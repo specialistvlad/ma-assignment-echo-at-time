@@ -2,14 +2,15 @@ const dayjs = require('dayjs');
 const cryptoRandomString = require('crypto-random-string');
 
 module.exports = class Queue {
-  constructor({ debug, storage }) {
+  constructor({ debug, storage, randomStringGenerator }) {
     this.redis = storage;
     this.name = 'queue';
     this.debug = debug;
+    this.randomStringGenerator = randomStringGenerator || cryptoRandomString;
   }
 
   async add(score, message) {
-    const member = `${cryptoRandomString({ length: 20 })}:${message}`;
+    const member = `${this.randomStringGenerator({ length: 20 })}:${message}`;
     this.debug(`add: ${score}, "${member}"`);
     return this.redis.zadd(this.name, score, member);
   }
