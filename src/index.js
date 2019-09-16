@@ -1,13 +1,11 @@
 const Redis = require('ioredis');
 const createDebug = require('debug');
-const Queue = require('./Queue');
-const Cron = require('./Cron');
+const pooler = require('./pooler');
 const server = require('./server');
 const { name } = require('../package');
 
 const debug = createDebug(name);
+const storage = new Redis();
 
-const queue = new Queue({ storage: new Redis(), debug });
-Cron(queue.pool.bind(queue));
-
-server({ queue, debug });
+server({ storage, debug });
+pooler({ storage, debug });

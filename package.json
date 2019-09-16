@@ -28,11 +28,11 @@
   },
   "scripts": {
     "start": "yarn run nodemon ./src",
-    "pre-commit": "yarn lint & yarn test",
+    "buildcheck": "yarn lint & yarn test",
     "debug": "DEBUG=ma-assignment-echo-at-time yarn start",
     "lint": "yarn eslint .",
-    "test": "yarn jest --coverage",
-    "test:watch": "yarn test --watch",
+    "test": "yarn jest",
+    "test:watch": "yarn jest --watch",
     "test:update": "yarn test --updateSnapshot",
     "seed": "curl http://localhost:3000/seed",
     "redis:run": "docker run -p 6379:6379 --name ma-assignment-echo-at-time-redis -d redis",
@@ -41,11 +41,10 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn pre-commit"
+      "pre-commit": "yarn buildcheck"
     }
   },
   "jest": {
-    "collectCoverage": true,
     "collectCoverageFrom": ["src/**/*.{js,jsx}"],
     "coverageThreshold": {
       "global": {

@@ -1,6 +1,5 @@
-const debug = require('debug')('');
-const FakeRedis = require('./FakeRedis');
-const EchoQueue = require('../src/Queue');
+const FakeRedis = require('./utils/FakeRedis');
+const EchoQueue = require('./utils/QueueWithMockedVariables');
 
 describe('addingDataToStorage', () => {
   it('check positive flow of quering to redis', async () => {
@@ -14,11 +13,7 @@ describe('addingDataToStorage', () => {
     ];
 
     const storage = new FakeRedis();
-    const echoQueue = new EchoQueue({
-      storage,
-      debug,
-      randomStringGenerator: () => 'not random string generator'
-    });
+    const echoQueue = new EchoQueue({ storage });
     await Promise.all(dataSet.map(item => echoQueue.add(...item)));
     expect(storage.history).toMatchSnapshot();
   });

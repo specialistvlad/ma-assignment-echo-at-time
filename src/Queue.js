@@ -2,20 +2,23 @@ const dayjs = require('dayjs');
 const cryptoRandomString = require('crypto-random-string');
 
 module.exports = class Queue {
-  constructor({ debug, storage, randomStringGenerator }) {
+  constructor({ debug, storage }) {
     this.redis = storage;
     this.name = 'queue';
     this.debug = debug;
-    this.randomStringGenerator = randomStringGenerator || cryptoRandomString;
   }
 
   async add(score, message) {
-    const member = `${this.randomStringGenerator({ length: 20 })}:${message}`;
+    const member = `${this._getRandomString(20)}:${message}`;
     this.debug(`add: ${score}, "${member}"`);
     return this.redis.zadd(this.name, score, member);
   }
 
-  getCurrentTime() {
+  _getRandomString(length) {
+    return cryptoRandomString({ length });
+  }
+
+  _getCurrentTime() {
     return dayjs().valueOf();
   }
 
@@ -28,26 +31,18 @@ module.exports = class Queue {
         [5001, 'Message 4'],
         [5002, 'Message 4_2'],
         [3000, 'Message 2']
-      ].map(([offset, message]) => this.add(this.getCurrentTime() + offset, message))
+      ].map(([offset, message]) => this.add(this._getCurrentTime() + offset, message))
     );
   }
 
-  async pool() {
+  async shift() {
+    const time = this._getCurrentTime();
     const [[, result]] = await this.redis
       .multi()
-      .zrangebyscore(this.name, 0, this.getCurrentTime())
-      .zremrangebyscore(this.name, 0, this.getCurrentTime())
+      .zrangebyscore(this.name, 0, time)
+      .zremrangebyscore(this.name, 0, time)
       .exec();
 
-    result.map(this.printMessage);
-  }
-
-  printMessage(message) {
-    console.log(
-      message
-        .split(':')
-        .slice(1)
-        .join('')
-    );
+    return result;
   }
 };

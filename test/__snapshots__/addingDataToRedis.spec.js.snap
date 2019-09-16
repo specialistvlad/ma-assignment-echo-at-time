@@ -4,6 +4,7 @@ exports[`addingDataToStorage check positive flow of quering to redis 1`] = `
 Array [
   Object {
     "args": Array [
+      "queue",
       4000,
       "not random string generator:Message 3",
     ],
@@ -11,6 +12,7 @@ Array [
   },
   Object {
     "args": Array [
+      "queue",
       6000,
       "not random string generator:Message 5",
     ],
@@ -18,6 +20,7 @@ Array [
   },
   Object {
     "args": Array [
+      "queue",
       1000,
       "not random string generator:Message 1",
     ],
@@ -25,6 +28,7 @@ Array [
   },
   Object {
     "args": Array [
+      "queue",
       5001,
       "not random string generator:Message 4",
     ],
@@ -32,6 +36,7 @@ Array [
   },
   Object {
     "args": Array [
+      "queue",
       5002,
       "not random string generator:Message 4_2",
     ],
@@ -39,6 +44,7 @@ Array [
   },
   Object {
     "args": Array [
+      "queue",
       3000,
       "not random string generator:Message 2",
     ],

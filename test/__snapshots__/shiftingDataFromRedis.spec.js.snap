@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shiftingDataFromRedis check positive flow of quering to redis 1`] = `
+Array [
+  "82f2bc06d2fe28ca2bf0:Message 1",
+  "216427f50da68fcea198:Message 2",
+  "f01aefe1bf6e284a742e:Message 3",
+  "cfbcd4ab8b4d38b28c4b:Message 4",
+  "cf761d0bf423e1e5a37f:Message 4_2",
+  "0587cb69d23ce9387595:Message 5",
+]
+`;
+
+exports[`shiftingDataFromRedis check positive flow of quering to redis 2`] = `
+Array [
+  Object {
+    "args": Array [],
+    "command": "multi",
+  },
+  Object {
+    "args": Array [
+      "queue",
+      0,
+      3500,
+    ],
+    "command": "zrangebyscore",
+  },
+  Object {
+    "args": Array [
+      "queue",
+      0,
+      3500,
+    ],
+    "command": "zremrangebyscore",
+  },
+  Object {
+    "args": Array [],
+    "command": "exec",
+  },
+]
+`;

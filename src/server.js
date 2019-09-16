@@ -2,7 +2,10 @@ const express = require('express');
 const { urlencoded } = require('body-parser');
 const dayjs = require('dayjs');
 
-module.exports = ({ queue, debug }) => {
+const Queue = require('./Queue');
+
+module.exports = ({ storage, debug }) => {
+  const queue = new Queue({ storage, debug });
   const app = express();
   app.use(urlencoded({ extended: false }));
 
